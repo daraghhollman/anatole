@@ -1,0 +1,20 @@
+<!--
+	class: class of the figure
+	link: url the image directs to
+	alt: alternative text
+	caption: caption
+	mouse: what the image says when moused over ("title" in HTML)
+-->
+<figure class="gallery-img" >
+	{{- with .Get "link"}}<a href="{{.}}">{{ end -}}
+	<img src="{{ .Get "src" }}"
+	     {{- with .Get "mouse" }} title="{{.}}"{{ end -}}
+	     {{- with .Get "alt" }} alt="{{.}}"{{ end -}}
+	>
+	{{- if .Get "link"}}</a>{{ end -}}
+	{{- with .Get "caption" -}}
+	<figcaption class="gallery-img-caption">
+	{{- . -}}
+	</figcaption>
+	{{- end -}}
+</figure>
